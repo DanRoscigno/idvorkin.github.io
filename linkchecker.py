@@ -58,7 +58,11 @@ class MySpider(CrawlSpider):
             follow=True,
         ),
         # crawl external links but don't follow them
-        # I don't follow what don't follow means - seems like it's actually crawling
+        # This rule is to have the linkchecker crawl each of the links found in
+        # your pages (the pages in the `target_domains` list that get crawled)
+        # but not go any further. This can be used for testing the URLs on your
+        # site for 302, 404, etc. The `follow=False` causes the links on these
+        # pages to not get crawled.
         # Rule(
         # LinkExtractor(allow=(""), deny=("patterToBeExcluded"), unique=("Yes")),
         # callback=parse_my_url,
